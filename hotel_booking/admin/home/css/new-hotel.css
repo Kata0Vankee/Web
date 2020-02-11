@@ -1,0 +1,19 @@
+.input-info{
+	height: 150px;
+}
+.add-result-alert{
+	text-align: center;
+	width: 100%;
+}
+.red-alert{
+	color: red;
+}
+.green-alert{
+	color: green;
+}
+
+.new-input{
+	width: 40%!important;
+	display: inline-block;
+	color: red;
+}
