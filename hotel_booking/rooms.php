@@ -30,16 +30,12 @@
                 ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="room-item">
-                        <img src="img/room/room-1.jpg" alt="">
+                        <img src="admin/uploads/<?php echo $result['ROOMPHOTO']; ?>" style="height: 300px;" alt="">
                         <div class="ri-text">
                             <h4><?php echo $result['ROOMNAME']; ?></h4>
                             <h3><?php echo $result['ROOMPRICE']; ?>đ<span>/Permonth</span></h3>
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
                                     <tr>
                                         <td class="r-o">Max person:</td>
                                         <td><?php echo $result['ROOMMAXP']; ?></td>
@@ -54,7 +50,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="primary-btn">More Details</a>
+                            <a href="room-details.php?room_id=<?php echo $result['ROOMID']; ?>" class="primary-btn">More Details</a>
+                            <a href="booking.php?room_id=<?php echo $result['ROOMID']; ?>" class="primary-btn" style="margin-left: 20px; color: royalblue; font-size: 20px;">Booking Now</a>
                         </div>
                     </div>
                 </div>

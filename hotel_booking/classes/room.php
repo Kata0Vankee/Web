@@ -17,7 +17,7 @@
 			$this->fm = new Format();
 		}
 
-		public function insert_room($data, $file) {
+		public function insert_room($data, $files) {
 			//$name = $this->fm->validation($user);
 			//$price = $this->fm->validation($pass);
 			$name = $data['name'];
@@ -28,19 +28,26 @@
 		    $phone = $data['phone'];
 		    $info = $data['info'];
 
-		    //Xu li hinh anh
-		    $permited = array('jpg', 'jpeg', 'png', 'gif');
-		    $file_name = $file['image']['name'];
-		    $file_size = $file['image']['size'];
-		    $file_temp = $file['image']['tmp_name'];
-
-		    $div = explode('.', $file_name);
-
-			if (empty($name) || empty($place) || empty($price) || empty($size) || empty($maxpeople) || empty($phone) || empty($info)) {
+		    //Xu li hinh anh		    
+			if (empty($name) || empty($place) || empty($price) || empty($size) || empty($maxpeople) || empty($phone) || empty($info) || !isset($files)) {
 				$alert = "<span class='add-result-alert red-alert'>Please fill all the input!!!<span>";
 				return $alert;
 			} else {
-				$query = "INSERT INTO tbl_rooms (`ROOMNAME`, `ROOMPLACE`, `ROOMPRICE`, `ROOMSIZE`, `ROOMMAXP`, `ROOMPHONE`, `ROOMINFO`, `ROOMSTATUS`) VALUES ('$name','$place','$price','$size','$maxpeople','$phone','$info','Available');";
+
+				$permited = array('jpg', 'jpeg', 'png', 'gif');
+			    $file_name = $files['photo']['name'];
+			    $file_size = $files['photo']['size'];
+			    $file_temp = $files['photo']['tmp_name'];
+			    $error = $files['photo']['error'];
+			    
+			    $div = explode('.', $file_name);
+			    $file_ext = strtolower(end($div));
+			    $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+			    echo "<script>console.log($error)</script>";
+			    $upload_image = "uploads/".$unique_image;
+				move_uploaded_file($file_temp, $upload_image);
+
+				$query = "INSERT INTO tbl_rooms (`ROOMNAME`, `ROOMPLACE`, `ROOMPRICE`, `ROOMSIZE`, `ROOMMAXP`, `ROOMPHONE`, `ROOMINFO`, `ROOMSTATUS`, `ROOMPHOTO`) VALUES ('$name','$place','$price','$size','$maxpeople','$phone','$info','Available','$unique_image');";
 				$result = $this->db->insert($query);
 
 				if ($result != false) {

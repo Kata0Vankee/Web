@@ -88,7 +88,9 @@ ul, ol {
 /*---------------------
   Helper CSS
 -----------------------*/
-
+.input-form{
+	height: 50px;
+}
 .section-title {
 	text-align: center;
 	margin-bottom: 22px;
@@ -1956,21 +1958,56 @@ ul, ol {
 .map iframe {
 	width: 100%;
 }
+.submit-info{
+	width:60%;
+	margin: auto;
+}
+.signup-form{
+	margin-top: 50px;
+}
+.sm-signup{
+	margin: auto;
+	margin-top:40px;
+	width: 30%;
+}
+.signup-section{
+	background-color: blueviolet;
+}
 /*-------------------------------- Respinsive Media Styles --------------------------------*/
 
 @media only screen and (min-width: 1554px) and (max-width: 1920px) {
 	.hp-room-items .hp-room-item .hr-text {
 		bottom: -200px;
 	}
+	.avt-full{
+		margin-top: 30px;
+		width: 40%;
+		display: inline-block;
+		padding-left: 100px;
+	}
 }
 @media only screen and (min-width: 1200px) and (max-width: 1250px) {
 	.hp-room-items .hp-room-item .hr-text {
 		bottom: -288px;
 	}
+	.avt-full{
+		width: 20%;
+		display: inline-block;
+		padding-left: 100px;
+	}
 }
 @media only screen and (min-width: 1200px) {
 	.container {
-		max-width: 1170px;
+		max-width: 1300px;
+	}
+	.avt-full{
+		width: 20%;
+		display: inline-block;
+		padding-left: 100px;
+		padding-top: 50px;
+	}
+	.signup-inp{
+		margin-top: 100px;
 	}
 }
 /* Medium Device: 1200px */
@@ -1990,6 +2027,11 @@ ul, ol {
 	}
 }
 @media only screen and (max-width: 991px) {
+	.row-align{
+		display: block;
+		margin: auto;
+		width: 100%;
+	}
 	.top-nav {
 		display: none;
 	}

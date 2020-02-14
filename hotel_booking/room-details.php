@@ -1,7 +1,11 @@
 <?php
     include "inc/header.php";
 ?>
-
+<?php 
+    $room_id = $_GET['room_id'];
+    $room_details = $room->select_room($room_id);
+    $result = $room_details->fetch_assoc(); 
+?>
     <!-- Breadcrumb Section Begin -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -24,12 +28,12 @@
     <section class="room-details-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8" style="margin: auto;">
                     <div class="room-details-item">
-                        <img src="img/room/room-details.jpg" alt="">
+                        <img src="admin/uploads/<?php echo $result['ROOMPHOTO']; ?>" alt="">
                         <div class="rd-text">
                             <div class="rd-title">
-                                <h3>Premium King Room</h3>
+                                <h3><?php echo $result['ROOMNAME']; ?></h3>
                                 <div class="rdt-right">
                                     <div class="rating">
                                         <i class="icon_star"></i>
@@ -41,38 +45,25 @@
                                     <a href="#">Booking Now</a>
                                 </div>
                             </div>
-                            <h2>159$<span>/Pernight</span></h2>
+                            <h2><?php echo $result['ROOMPRICE']; ?><span>/Permonth</span></h2>
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
+                                        <td><?php echo $result['ROOMSIZE']; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
+                                        <td>Max person <?php echo $result['ROOMMAXP']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
-                                    </tr>
+                                        <td class="r-o">Place:</td>
+                                        <td><?php echo $result['ROOMPLACE']; ?></td>
+                                    </tr>                          
                                 </tbody>
                             </table>
-                            <p class="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                search the various sites of our great land, America.</p>
-                            <p>The two commonly known recreational vehicle classes are the motorized and towable.
-                                Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or fifth
-                                wheel has the attraction of getting towed by a pickup or a car, thus giving the
-                                adaptability of possessing transportation for you when you are parked at your campsite.
+                            <p class="f-para">
+                                <?php echo $result['ROOMINFO']; ?>
                             </p>
                         </div>
                     </div>
@@ -145,36 +136,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="room-booking">
-                        <h3>Your Reservation</h3>
-                        <form action="#">
-                            <div class="check-date">
-                                <label for="date-in">Check In:</label>
-                                <input type="text" class="date-input" id="date-in">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="check-date">
-                                <label for="date-out">Check Out:</label>
-                                <input type="text" class="date-input" id="date-out">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="select-option">
-                                <label for="guest">Guests:</label>
-                                <select id="guest">
-                                    <option value="">3 Adults</option>
-                                </select>
-                            </div>
-                            <div class="select-option">
-                                <label for="room">Room:</label>
-                                <select id="room">
-                                    <option value="">1 Room</option>
-                                </select>
-                            </div>
-                            <button type="submit">Check Availability</button>
-                        </form>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>

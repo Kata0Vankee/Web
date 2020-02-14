@@ -6,11 +6,15 @@ include ($filepath.'/../classes/room.php');
 ?>
 
 <?php 
-  $result_add_room = "";
+  $result_add_room="";
+  if (isset($_FILES["photo"])) {
+    $s = $_FILES["photo"]['name'];
+    echo "<script>console.log($s)</script>";
+  }
+
   if (isset($_POST['name'])) {
     $new_room = new Room();
-
-    $result_add_room = $new_room->insert_room($_POST);
+    $result_add_room = $new_room->insert_room($_POST, $_FILES);
   }
 ?>
 <style>
@@ -48,7 +52,7 @@ include ($filepath.'/../classes/room.php');
           <div class="tm-block-col tm-col-account-settings" style="width: 600px; margin:auto;">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
               <h2 class="tm-block-title">INSERT ROOM</h2>
-              <form id="insert" action="new-room2.php?action=add-room" class="tm-signup-form row" method="POST">
+              <form id="insert" action="new-room.php" class="tm-signup-form row" method="POST" enctype="multipart/form-data">
                 <div class="form-group col-lg-6">
                   <label for="name">Name:</label>
                   <input

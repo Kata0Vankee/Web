@@ -21,16 +21,16 @@ include ($filepath.'/../classes/room.php');
         </div>
         <!-- row -->
         <div class="row tm-content-row" style="margin-top: 20px;">
-          <div class="tm-block-col tm-col-avatar">
+          <div class="tm-block-col tm-col-avatar" style="width: 20%;">
             <div class="tm-bg-primary-dark tm-block tm-block-avatar">
               <h2 class="tm-block-title">Photo</h2>
               <div class="tm-avatar-container" style="height: 200px; border: groove; border-radius: 10px">
-                
+                <input id="photo" type="file" name="photo" style="display: none" form="insert" accept="image/*">
                 <a href="#" class="tm-avatar-delete-link">
-                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                  <img id="photo_show" src="uploads/<?php echo $result['ROOMPHOTO']; ?>" style="width: 100%; height: 100%;">
                 </a>
               </div>
-              <button class="btn btn-primary btn-block text-uppercase">
+              <button id="submit_photo" class="btn btn-primary btn-block text-uppercase">
                 Upload Photo
               </button>
             </div>
@@ -76,7 +76,7 @@ include ($filepath.'/../classes/room.php');
                     name="size"
                     type="text"
                     class="form-control validate"
-                    value="<?php echo $result['ROOMROOMS'] ?>"
+                    value="<?php echo $result['ROOMSIZE'] ?>"
                   />
                 </div>
                 <div class="form-group col-lg-6">
